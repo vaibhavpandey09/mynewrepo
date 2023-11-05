@@ -1,0 +1,46 @@
+<div>
+  <form [formGroup]="userDetails">
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Id" formControlName="id">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Name" formControlName="name">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Username" formControlName="username">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Email" formControlName="email">
+      </div>
+      <div class="col">
+        <button class="btn btn-success" (click)="submitDetails()">Add Details</button>
+      </div>
+    </div>
+  </form>
+  <table id="excel-table"  class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Username</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of userList">
+      <td scope="row">{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td><button (click)="exportExcel(user)" class="btn btn-primary">Export to Excel</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <br><br>
+  <label>Select a file to upload</label>
+  <input type="file" (change)="readExcel($event)"  style="background-color: brown;color:white"/>
+ 
+
+  <!-- <button (click)="exportExcel()">Export to Excel</button> -->
+</div>
